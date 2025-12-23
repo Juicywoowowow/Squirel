@@ -77,7 +77,9 @@ KERNEL_OBJ := $(BUILD_DIR)/start64.o \
               $(BUILD_DIR)/cmd_help.o \
               $(BUILD_DIR)/cmd_clear.o \
               $(BUILD_DIR)/cmd_echo.o \
-              $(BUILD_DIR)/cmd_info.o
+              $(BUILD_DIR)/cmd_info.o \
+              $(BUILD_DIR)/cmd_color.o \
+              $(BUILD_DIR)/cmd_memdump.o
 
 # ==============================================================================
 # Main Targets
@@ -194,6 +196,14 @@ $(BUILD_DIR)/cmd_echo.o: $(KERNEL_DIR)/shell/commands/cmd_echo.c | $(BUILD_DIR)
 
 $(BUILD_DIR)/cmd_info.o: $(KERNEL_DIR)/shell/commands/cmd_info.c | $(BUILD_DIR)
 	@echo "[CC] cmd_info.c"
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(BUILD_DIR)/cmd_color.o: $(KERNEL_DIR)/shell/commands/cmd_color.c | $(BUILD_DIR)
+	@echo "[CC] cmd_color.c"
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(BUILD_DIR)/cmd_memdump.o: $(KERNEL_DIR)/shell/commands/cmd_memdump.c | $(BUILD_DIR)
+	@echo "[CC] cmd_memdump.c"
 	$(CC) $(CFLAGS) -c $< -o $@
 
 # ==============================================================================

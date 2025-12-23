@@ -49,6 +49,8 @@ extern void cmd_help(int argc, char *argv[]);
 extern void cmd_clear(int argc, char *argv[]);
 extern void cmd_echo(int argc, char *argv[]);
 extern void cmd_info(int argc, char *argv[]);
+extern void cmd_color(int argc, char *argv[]);
+extern void cmd_memdump(int argc, char *argv[]);
 
 /* ============================================================================
  * Private Functions
@@ -117,10 +119,12 @@ static shell_command_t *shell_find_command(const char *name) {
  * @brief Initialize built-in commands
  */
 static void shell_init_commands(void) {
-    shell_register_command("help",  "Display available commands",    cmd_help);
-    shell_register_command("clear", "Clear the screen",              cmd_clear);
-    shell_register_command("echo",  "Print text to screen",          cmd_echo);
-    shell_register_command("info",  "Display system information",    cmd_info);
+    shell_register_command("help",    "Display available commands",    cmd_help);
+    shell_register_command("clear",   "Clear the screen",              cmd_clear);
+    shell_register_command("echo",    "Print text to screen",          cmd_echo);
+    shell_register_command("info",    "Display system information",    cmd_info);
+    shell_register_command("color",   "Set text colors",               cmd_color);
+    shell_register_command("memdump", "Dump memory at address",        cmd_memdump);
 }
 
 /* ============================================================================
